@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
 import BudgetItem from './BudgetItem';
 
@@ -10,20 +9,6 @@ const BudgetTracker = () => {
   const [budgetItems, setBudgetItems] = useState([]);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
-
-  useEffect(() => {
-    fetchSummary();
-  }, []);
-
-  const fetchSummary = async () => {
-    try {
-      const response = await axios.get('http://localhost:8001/api/summary');
-      setIncome(response.data.totalIncome);
-      console.log(response.data);
-    } catch (error) {
-
-    }
-  };
 
   const addItem = () => {
     if (amount) {
